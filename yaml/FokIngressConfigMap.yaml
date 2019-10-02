@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-ingress-config-no-ssl
+  namespace: ingress-nginx
+data:
+  ssl-redirect: "false"
+  hsts: "false"
+  hsts-include-subdomains: "false"

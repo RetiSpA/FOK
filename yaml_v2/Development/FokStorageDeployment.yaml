@@ -1,0 +1,114 @@
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: mssql-fok-db
+spec:
+  serviceName: mssql-fok-db
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mssql-fok-db
+    spec:
+      terminationGracePeriodSeconds: 1
+      containers:
+      - name: mssql-fok-db
+        image: mcr.microsoft.com/mssql/server:2017-latest
+        ports:
+        - containerPort: 1433
+        env:
+        - name: ACCEPT_EULA
+          value: 'Y'
+        - name: MSSQL_SA_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mssql
+              key: SA_PASSWORD
+        volumeMounts:
+        - name: mssqldb
+          mountPath: /var/opt/mssql
+      volumes:
+      - name: mssqldb
+        persistentVolumeClaim:
+          claimName: mssql-fok-data
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: mssql-fok-data
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: standard
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: rabbitmq
+  name: rabbitmq
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rabbitmq
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+         app: rabbitmq
+    spec:
+      containers:
+      - image: rabbitmq:3.8.0-beta.3-management-alpine
+        name: rabbitmq
+        ports:
+        - containerPort: 15672
+        - containerPort: 5672
+        volumeMounts:
+        - mountPath: /etc/rabbitmq
+          name: rabbit-mq-data
+      restartPolicy: Always
+      hostname: rabbitmq
+      volumes:
+      - name: rabbit-mq-data
+        persistentVolumeClaim:
+          claimName: rabbit-mq-data
+---
+kind: Service
+apiVersion: v1
+metadata:
+ name: rabbitmq
+spec:
+  type: NodePort
+  # clusterIP: None  # We need a headless service to allow the pods to discover each
+  ports:           # other during autodiscover phase for cluster creation.
+   - name: http    # A ClusterIP will prevent resolving dns requests for other pods
+     protocol: TCP # under the same service.
+     port: 15672
+     targetPort: 15672
+     nodePort: 30080
+   - name: amqp
+     protocol: TCP
+     port: 5672
+     targetPort: 5672
+     nodePort: 30081
+  selector:
+    app: rabbitmq
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    app: rabbit-mq-data
+  name: rabbit-mq-data
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+---

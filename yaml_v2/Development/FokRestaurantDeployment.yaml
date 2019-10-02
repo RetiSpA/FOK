@@ -1,0 +1,51 @@
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mssql-restaurants-db
+spec:
+  type: ExternalName
+  externalName: fok.database.windows.net
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fok-deployment-restaurants
+  labels:
+    app: fok-restaurants
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fok-restaurants
+  template:
+    metadata:
+      labels:
+        app: fok-restaurants
+    spec:
+      containers:      
+      - name: basketapi
+        image: caretro/foodonkontainers:restaurantsapi_v0
+        ports:
+        - containerPort: 80
+        env:
+        - name: "ASPNETCORE_ENVIRONMENT"
+          value: "Production"
+      imagePullSecrets:
+      - name: regcredcaretro
+---
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    name: reti-lab-foodonkontainers-restaurants-api
+  name: reti-lab-foodonkontainers-restaurants-api
+spec:
+  selector:
+    app: fok-restaurants
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+
+

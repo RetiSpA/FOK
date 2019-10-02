@@ -1,0 +1,43 @@
+# --- Deployment ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fok-deployment-gateway-ocelot
+  labels:
+    app: fok-gateway-ocelot
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: fok-gateway-ocelot
+  template:
+    metadata:
+      labels:
+        app: fok-gateway-ocelot
+    spec:
+      containers:      
+      - name: webgatewayocelot
+        image: caretro/foodonkontainers:gatewayocelot_v3
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80      
+      imagePullSecrets:
+      - name: regcredcaretro
+
+---
+
+# --- Service ---
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    name: reti-lab-foodonkontainers-gateway-ocelot
+  name: reti-lab-foodonkontainers-gateway-ocelot
+spec:
+  selector:
+    app: fok-gateway-ocelot
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+   

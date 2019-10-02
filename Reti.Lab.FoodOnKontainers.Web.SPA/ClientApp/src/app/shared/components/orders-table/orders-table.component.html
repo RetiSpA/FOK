@@ -1,0 +1,38 @@
+<table class="table" [ngClass]="tableClass">
+    <thead>
+        <tr>
+            <th scope="col">Quantità</th>
+            <th scope="col">Prodotto</th>
+            <th scope="col">€/pz</th>
+            <th scope="col">€ Tot</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of items">
+            <td>
+                <span class="badge badge-info">{{item.quantity}}</span>
+            </td>
+            <td>
+                <span>{{item.menuItemName}} </span>
+            </td>
+            <td>
+                <small>{{item.price}} €/pz</small>
+            </td>
+            <td>
+                <strong>{{item.price * item.quantity}} €</strong>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr class="table-info">
+            <td></td>
+            <td></td>
+            <td class="text-right">
+                <strong>TOTALE</strong>
+            </td>
+            <td>
+                <strong>{{total}} €</strong>
+            </td>
+        </tr>
+    </tfoot>
+</table>

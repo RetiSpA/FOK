@@ -1,0 +1,44 @@
+<button class="btn btn-outline-info" [ngbPopover]="popContent" placement="bottom">
+    <i class="fa fa-shopping-cart">
+        <span class="badge badge-info">
+            {{quantity}}
+        </span>
+    </i>
+</button>
+
+<ng-template #popContent>
+    <div class="card text-center">
+        <ng-container *ngIf="cartSvc.basket?.basketItems?.length > 0">
+            <div class="card-header">
+                <h5 class="card-title">
+                    <a [routerLink]='["/restaurant", cartSvc.basket?.restaurantId]'>{{cartSvc.basket?.restaurantName}}</a>                    
+                </h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" *ngFor="let item of cartSvc?.basket?.basketItems">
+                    <span class="badge badge-info">{{item.quantity}}</span>
+                    <span> {{item.menuItemName}}: </span>
+                    <span>{{item.price}} €/pz</span>
+                </li>
+            </ul>
+            <div class="card-footer">
+                <p class="card-text">
+                    <strong>TOT: </strong>{{total}} €
+                </p>
+            </div>
+            <div class="card-footer">
+                <div class="btn-group" role="group">
+                    <button class="btn btn-outline-secondary btn-sm" (click)="clear()">
+                        <i class="fa fa-trash"></i> Svuota
+                    </button>
+                    <a class="btn btn-info btn-sm" [routerLink]='["/cart"]'>
+                        <i class="fa fa-money"></i> Checkout
+                    </a>
+                </div>
+            </div>
+        </ng-container>
+        <div class="card-body" *ngIf="!cartSvc.basket?.basketItems?.length">
+            <p class="card-text">Il carrello è ancora vuoto</p>
+        </div>
+    </div>
+</ng-template>

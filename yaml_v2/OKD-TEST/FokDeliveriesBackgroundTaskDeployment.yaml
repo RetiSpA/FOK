@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fok-deployment-deliveries-background
+  labels:
+    app: fok-deliveries-background
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fok-deliveries-background
+  template:
+    metadata:
+      labels:
+        app: fok-deliveries-background
+    spec:
+      containers:      
+      - name: orderapi
+        image: caretro/foodonkontainers:deliveriesbackground_20190909_1
+        ports:
+        - containerPort: 80
+        env:
+        - name: "ASPNETCORE_ENVIRONMENT"
+          value: "Production"
+        - name: "ConnectionStrings__FokDeliveriesDB"
+          value: ""
+        - name: "RabbitMQConfigurations__HostName"
+          value: "rabbitmq.fok-test.svc"
+      imagePullSecrets:
+      - name: regcredcaretro
+

@@ -1,0 +1,42 @@
+# --- Deployment ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fok-deployment-basket
+  labels:
+    app: fok-basket
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: fok-basket
+  template:
+    metadata:
+      labels:
+        app: fok-basket
+    spec:
+      containers:      
+      - name: basketapi
+        image: caretro/foodonkontainers:basketapi
+        ports:
+        - containerPort: 80
+        - containerPort: 1433
+      imagePullSecrets:
+      - name: regcredcaretro
+
+---
+
+# --- Service ---
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    name: reti-lab-foodonkontainers-basket-api
+  name: reti-lab-foodonkontainers-basket-api
+spec:
+  selector:
+    app: fok-basket
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80

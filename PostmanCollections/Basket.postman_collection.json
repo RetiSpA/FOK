@@ -1,0 +1,188 @@
+{
+	"info": {
+		"_postman_id": "5f573167-98c4-47ec-8452-a0dce7e921e7",
+		"name": "Basket",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Basket",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": 2,\n    \"restaurantId\": 1,\n    \"restaurantName\": \"Panino Grigliato\",\n    \"basketItems\": [\n        {\n            \"menuItemId\": 1,\n            \"menuItemName\": \"Panino del giorno\",\n            \"quantity\": 1,\n            \"price\": 9\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{BasketUrl}}/api/basket/user/setbasket",
+					"host": [
+						"{{BasketUrl}}"
+					],
+					"path": [
+						"api",
+						"basket",
+						"user",
+						"setbasket"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove from Basket",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 2,\n    \"itemId\": 1,\n    \"quantity\": 1\n}"
+				},
+				"url": {
+					"raw": "{{BasketUrl}}/api/basket/user/removeitem",
+					"host": [
+						"{{BasketUrl}}"
+					],
+					"path": [
+						"api",
+						"basket",
+						"user",
+						"removeitem"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Basket",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 2,\n    \"itemId\": 1,\n    \"quantity\": 2\n}"
+				},
+				"url": {
+					"raw": "{{BasketUrl}}/api/basket/user/update",
+					"host": [
+						"{{BasketUrl}}"
+					],
+					"path": [
+						"api",
+						"basket",
+						"user",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Basket Item",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": 2,\n    \"restaurantId\": 1,\n    \"restaurantName\": \"Panino Grigliato\",\n    \"basketItems\": [\n        {\n            \"menuItemId\": 2,\n            \"menuItemName\": \"Panino con salamella\",\n            \"quantity\": 1,\n            \"price\": 7\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{BasketUrl}}/api/basket/user/additem",
+					"host": [
+						"{{BasketUrl}}"
+					],
+					"path": [
+						"api",
+						"basket",
+						"user",
+						"additem"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Basket",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{BasketUrl}}/api/basket/user/2",
+					"host": [
+						"{{BasketUrl}}"
+					],
+					"path": [
+						"api",
+						"basket",
+						"user",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clear Basket",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{BasketUrl}}/api/basket/user/clear/2",
+					"host": [
+						"{{BasketUrl}}"
+					],
+					"path": [
+						"api",
+						"basket",
+						"user",
+						"clear",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

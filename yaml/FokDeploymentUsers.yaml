@@ -1,0 +1,41 @@
+# --- Deployment ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fok-deployment-users
+  labels:
+    app: fok-users
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: fok-users
+  template:
+    metadata:
+      labels:
+        app: fok-users
+    spec:
+      containers:
+      - name: userapi
+        image: caretro/foodonkontainers:usersapi
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: regcredcaretro
+
+---
+
+# --- Service ---
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    name: reti-lab-foodonkontainers-users-api
+  name: reti-lab-foodonkontainers-users-api
+spec:
+  selector:
+    app: fok-users
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80

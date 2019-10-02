@@ -1,0 +1,17 @@
+.loader-overlay {
+    position: fixed;
+    z-index: 9999;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+    background-color: grey;
+    opacity: 0.3;
+}
+.spinner-border {
+    position: absolute;
+    top: 48%;
+    right: 48%;
+    width: 1.5em;
+    height: 1.5em;
+}

@@ -1,0 +1,27 @@
+<div class="container">
+    <p>Ordinato da <strong>{{userSvc.user.role === USER ? order?.restaurantName : order?.userName}}</strong></p>
+    <p>Stato ordine: <mark>{{order?.idStatus | orderStatus}}</mark></p>
+    <p>Prezzo totale: <strong>{{order?.price}} €</strong></p>
+    <div class="order-detail">
+        <div class="order-detail-item">Indirizzo di consegna: {{order?.deliveryAddress}}</div>
+        <div class="order-detail-item">Data di consegna richiesta:
+            {{order?.deliveryRequestedDate | date:'dd/MM/yy HH:mm'}}</div>
+    </div>
+    <br>
+    <div class="restaurant-menu">
+        <h4>Dettagli ordine</h4>
+        <app-orders-table [items]="order?.orderItem" tableClass="table-sm"></app-orders-table>
+    </div>
+    <div class="row justify-content-between" *ngIf="userSvc.user.role === MANAGER && order?.idStatus === workableOrder">
+        <div class="col-6">
+            <button class="btn btn-outline-danger float-left" (click)="reject(order.id)">
+                <i class="fa fa-times"></i> Rifiuta ordine
+            </button>
+        </div>
+        <div class="col-6">
+            <button class="btn btn-info float-right" (click)="accept(order.id)">
+                <i class="fa fa-check"></i> Accetta ordine
+            </button>
+        </div>
+    </div>
+</div>

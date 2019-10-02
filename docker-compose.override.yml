@@ -1,0 +1,80 @@
+version: '3.4'
+
+services:
+  reti.lab.foodonkontainers.users.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - UsersApiClient=http://${EXTERNAL_DNS_NAME_OR_IP}:5001
+    ports:
+      - "80"
+
+  reti.lab.foodonkontainers.restaurants.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - RestaurantsApiClient=http://${EXTERNAL_DNS_NAME_OR_IP}:5002
+    ports:
+      - "80"
+
+
+  reti.lab.foodonkontainers.basket.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - BasketsApiClient=http://${EXTERNAL_DNS_NAME_OR_IP}:5003
+    ports:
+      - "80"
+
+
+  reti.lab.foodonkontainers.deliveries.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DeliveriesApiClient=http://${EXTERNAL_DNS_NAME_OR_IP}:5004
+    ports:
+      - "80"
+
+
+  reti.lab.foodonkontainers.orders.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - OrdersApiClient=http://${EXTERNAL_DNS_NAME_OR_IP}:5005
+    ports:
+      - "80"
+
+
+  reti.lab.foodonkontainers.payments.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - PaymentsApiClient=http://${EXTERNAL_DNS_NAME_OR_IP}:5006
+    ports:
+      - "80"
+
+
+  reti.lab.foodonkontainers.reviews.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ReviewsApiClient=http://${EXTERNAL_DNS_NAME_OR_IP}:5007
+    ports:
+      - "80"
+
+
+  reti.lab.foodonkontainers.web.spa:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    ports:
+      - "80"
+
+
+  reti.lab.foodonkontainers.gateway.simple:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - GatewayApiClient=http://${EXTERNAL_DNS_NAME_OR_IP}:5000
+    ports:
+      - "80"
+
+
+  reti.lab.foodonkontainers.gateway.ocelot:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - GatewayOcelotApiClient=http://${EXTERNAL_DNS_NAME_OR_IP}:4000
+    ports:
+      - "80"
+

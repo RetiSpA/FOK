@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fok-deployment-http-aggregator
+  labels:
+    app: fok-http-aggregator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fok-http-aggregator
+  template:
+    metadata:
+      labels:
+        app: fok-http-aggregator
+    spec:
+      containers:      
+      - name: orderapi
+        image: caretro/foodonkontainers:httpaggregator_20190902_1
+        ports:
+        - containerPort: 80
+        env:
+        - name: "ASPNETCORE_ENVIRONMENT"
+          value: "Production"
+        - name: "urls__basket"
+          value: "http://reti-lab-foodonkontainers-basket-api.fok-test.svc"
+        - name: "urls__user"
+          value: "http://reti-lab-foodonkontainers-users-api.fok-test.svc"
+        - name: "urls__payment"
+          value: "http://reti-lab-foodonkontainers-payment-api.fok-test.svc"
+        - name: "urls__restaurant"
+          value: "http://reti-lab-foodonkontainers-restaurants-api.fok-test.svc"
+        - name: "urls__order"
+          value: "http://reti-lab-foodonkontainers-orders-api.fok-test.svc"
+      imagePullSecrets:
+      - name: regcredcaretro
+---
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    name: reti-lab-foodonkontainers-http-aggregator
+  name: reti-lab-foodonkontainers-http-aggregator
+spec:
+  selector:
+    app: fok-http-aggregator
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+
+

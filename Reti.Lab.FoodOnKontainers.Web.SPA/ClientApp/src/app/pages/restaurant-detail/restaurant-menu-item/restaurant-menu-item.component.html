@@ -1,0 +1,36 @@
+<ng-container *ngIf="userSvc.user?.role === USER">
+    <div class="card text-center">
+        <div class="card-body">
+            <h5 class="card-title">{{item?.name}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{item?.description}}</h6>
+            <p class="card-text"><small>{{item?.idDishTypeNavigation?.name}}</small></p>
+            <p class="card-text"><span>Prezzo: {{item?.price}}</span></p>
+            <button class="btn btn-outline-info" (click)="addToCart(item)"
+                [disabled]="cartSvc?.basket?.restaurantId != item.idRestaurant && cartSvc?.basket?.restaurantId != null">
+                Aggiungi al carrello
+            </button>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="userSvc.user?.role === MANAGER">
+    <form class="card text-center" #menuForm="ngForm">
+        <div class="card-body">
+            <h5 class="card-title">{{item?.name}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{item?.description}}</h6>
+            <p class="card-text"><small>{{item?.idDishTypeNavigation?.name}}</small></p>
+            <div class="card-text">
+                <div class="form-group">
+                    <label for="price">Prezzo</label>
+                    <input type="number" class="form-control" id="price" name="price"
+                        required [(ngModel)]="item.price">
+                </div>
+            </div>
+            <button class="btn btn-outline-info"
+                (click)="updateItem(item)" 
+                [disabled]="!menuForm.form.valid || menuForm.form.pristine">
+                Aggiorna
+            </button>
+        </div>
+    </form>
+</ng-container>

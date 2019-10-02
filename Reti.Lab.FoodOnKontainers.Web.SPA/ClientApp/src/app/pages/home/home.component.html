@@ -1,0 +1,22 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container" *ngIf="userSvc.logged">
+    <h1 class="display-4">FoodOnKontainers</h1>
+    <p class="lead">Bentornato {{userSvc.user?.name}}</p>
+  </div>
+  <div class="container" *ngIf="!userSvc.logged">
+    <h4 class="display-4">FoodOnKontainers login</h4>
+    <form (ngSubmit)="login()" #loginForm="ngForm">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" placeholder="username" id="username" name="username" required
+          [(ngModel)]="username">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required
+          [(ngModel)]="password">
+      </div>
+      <button type="submit" class="btn btn-info" [disabled]="!loginForm.form.valid">Login</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+{
+	"info": {
+		"_postman_id": "9cd07e49-d374-4169-9f59-028d990081f6",
+		"name": "Flow",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ConfirmBasket",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": 2,\n    \"userName\": \"caretro1\",\n    \"deliveryAddress\": \"Via Dante, 6, 21052 Busto Arsizio VA\",\n    \"deliveryPosition\": {\n\t\t\"latitude\": 45.609550,\n\t\t\"longitude\": 8.849976\n\t},\n    \"deliveryRequestedDate\": \"{{inAnHour}}\"\n}"
+				},
+				"url": {
+					"raw": "{{AggregatorUrl}}/api/flow/user/confirmbasket",
+					"host": [
+						"{{AggregatorUrl}}"
+					],
+					"path": [
+						"api",
+						"flow",
+						"user",
+						"confirmbasket"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

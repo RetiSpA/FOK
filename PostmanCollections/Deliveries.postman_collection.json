@@ -1,0 +1,366 @@
+{
+	"info": {
+		"_postman_id": "f6df88b6-7aff-4b98-9cda-e87adbf21bf4",
+		"name": "Deliveries",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Delivery",
+			"item": [
+				{
+					"name": "GetDeliveries",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DeliveriesUrl}}/api/deliveries/all",
+							"host": [
+								"{{DeliveriesUrl}}"
+							],
+							"path": [
+								"api",
+								"deliveries",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetDeliveries filtered",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DeliveriesUrl}}/api/deliveries/all?today=true&status=1",
+							"host": [
+								"{{DeliveriesUrl}}"
+							],
+							"path": [
+								"api",
+								"deliveries",
+								"all"
+							],
+							"query": [
+								{
+									"key": "today",
+									"value": "true"
+								},
+								{
+									"key": "status",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetDelivery",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DeliveriesUrl}}/api/deliveries/1",
+							"host": [
+								"{{DeliveriesUrl}}"
+							],
+							"path": [
+								"api",
+								"deliveries",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddDelivery",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e9abac14-0328-48a8-b837-96b77858b333",
+								"exec": [
+									"var today = new Date();\r",
+									"today.setHours(today.getHours() + 1);\r",
+									"pm.environment.set(\"inAnHour\", today.toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idOrder\": 1,\n    \"pickUpAddress\": \"Via Matteotti, 21, 21052 Busto Arsizio VA\",\n    \"pickUpPosition\": {\n\t\t\"latitude\": 45.619136,\n\t\t\"longitude\": 8.847071\n\t},\n    \"deliveryAddress\": \"Via Dante, 6, 21052 Busto Arsizio VA\",\n    \"deliveryPosition\": {\n\t\t\"latitude\": 45.609550,\n\t\t\"longitude\": 8.849976\n\t},\n    \"deliveryRequestedDate\": \"{{inAnHour}}\",\n    \"restaurantName\": \"Panino Grigliato\",\n    \"deliveryName\": \"Roberto Carettoni\"\n}"
+						},
+						"url": {
+							"raw": "{{DeliveriesUrl}}/api/deliveries/add",
+							"host": [
+								"{{DeliveriesUrl}}"
+							],
+							"path": [
+								"api",
+								"deliveries",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateDelivery",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e9abac14-0328-48a8-b837-96b77858b333",
+								"exec": [
+									"var now = new Date();\r",
+									"postman.setEnvironmentVariable(\"now\", now.toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 1,\n\t\"idRider\": 1,\n    \"takeChargeDate\": \"{{now}}\"\n}"
+						},
+						"url": {
+							"raw": "{{DeliveriesUrl}}/api/deliveries/update",
+							"host": [
+								"{{DeliveriesUrl}}"
+							],
+							"path": [
+								"api",
+								"deliveries",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateDeliveryStatus",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e9abac14-0328-48a8-b837-96b77858b333",
+								"exec": [
+									"var now = new Date();\r",
+									"postman.setEnvironmentVariable(\"now\", now.toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{DeliveriesUrl}}/api/deliveries/update/delivery/1/4",
+							"host": [
+								"{{DeliveriesUrl}}"
+							],
+							"path": [
+								"api",
+								"deliveries",
+								"update",
+								"delivery",
+								"1",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rider",
+			"item": [
+				{
+					"name": "GetRiders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DeliveriesUrl}}/api/riders/all",
+							"host": [
+								"{{DeliveriesUrl}}"
+							],
+							"path": [
+								"api",
+								"riders",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetRiders filtered",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DeliveriesUrl}}/api/riders/all?active=true&latitude=45.609550&longitude=8.849976",
+							"host": [
+								"{{DeliveriesUrl}}"
+							],
+							"path": [
+								"api",
+								"riders",
+								"all"
+							],
+							"query": [
+								{
+									"key": "active",
+									"value": "true"
+								},
+								{
+									"key": "latitude",
+									"value": "45.609550"
+								},
+								{
+									"key": "longitude",
+									"value": "8.849976"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetRider",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DeliveriesUrl}}/api/riders/1",
+							"host": [
+								"{{DeliveriesUrl}}"
+							],
+							"path": [
+								"api",
+								"riders",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddRider",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"active\": true,\n\t\"riderName\": \"fattorino1\"\n}"
+						},
+						"url": {
+							"raw": "{{DeliveriesUrl}}/api/riders/add",
+							"host": [
+								"{{DeliveriesUrl}}"
+							],
+							"path": [
+								"api",
+								"riders",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateRider",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"idRider\": 1,\n\t\"range\": 10,\n\t\"startingPointAddress\": \"Via Dante, 6, 21052 Busto Arsizio VA\",\n    \"startingPoint\": {\n\t\t\"latitude\": 45.609550,\n\t\t\"longitude\": 8.849976\n\t}\n}"
+						},
+						"url": {
+							"raw": "{{DeliveriesUrl}}/api/riders/update",
+							"host": [
+								"{{DeliveriesUrl}}"
+							],
+							"path": [
+								"api",
+								"riders",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteRider",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{DeliveriesUrl}}/api/riders/delete/1",
+							"host": [
+								"{{DeliveriesUrl}}"
+							],
+							"path": [
+								"api",
+								"riders",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fok-deployment-users
+  labels:
+    app: fok-users
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fok-users
+  template:
+    metadata:
+      labels:
+        app: fok-users
+    spec:
+      containers:
+      - name: userapi
+        image: caretro/foodonkontainers:usersapi_v0
+        ports:
+        - containerPort: 80
+        env:
+        - name: "ASPNETCORE_ENVIRONMENT"
+          value: "Production"
+        - name: "ConnectionStrings__FokUserDB"
+          value: ""
+        - name: "RabbitMQConfigurations__HostName"
+          value: "rabbitmq.fok-test.svc"
+        - name: "RabbitMQConfigurations__Port"
+          value: "5672"
+      imagePullSecrets:
+      - name: regcredcaretro
+---
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    name: reti-lab-foodonkontainers-users-api
+  name: reti-lab-foodonkontainers-users-api
+spec:
+  selector:
+    app: fok-users
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80

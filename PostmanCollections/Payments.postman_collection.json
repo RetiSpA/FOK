@@ -1,0 +1,96 @@
+{
+	"info": {
+		"_postman_id": "1f28e735-dae5-47b0-9ad5-70c3b4b02fb3",
+		"name": "Payments",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Receipt",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{PaymentUrl}}/api/payment/getReceipt/1",
+					"host": [
+						"{{PaymentUrl}}"
+					],
+					"path": [
+						"api",
+						"payment",
+						"getReceipt",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Transaction",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": 1,\n    \"orderId\": 1,\n    \"total\": 20.0,\n    \"restaurantId\": 1,\n    \"paySystem\": 1,\n    \"status\": \"\"\n}"
+				},
+				"url": {
+					"raw": "{{PaymentUrl}}/api/payment/updateTransaction",
+					"host": [
+						"{{PaymentUrl}}"
+					],
+					"path": [
+						"api",
+						"payment",
+						"updateTransaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Transaction",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": 1,\n    \"orderId\": 1,\n    \"total\": 15.0,\n    \"restaurantId\": 1,\n    \"paySystem\": 1,\n    \"status\": \"\"\n}"
+				},
+				"url": {
+					"raw": "{{PaymentUrl}}/api/payment/addTransaction",
+					"host": [
+						"{{PaymentUrl}}"
+					],
+					"path": [
+						"api",
+						"payment",
+						"addTransaction"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

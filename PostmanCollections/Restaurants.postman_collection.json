@@ -1,0 +1,321 @@
+{
+	"info": {
+		"_postman_id": "c04a7693-99af-46b0-86a6-cb538aad4d08",
+		"name": "Restaurants",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Restaurants",
+			"item": [
+				{
+					"name": "Get Restaurants",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{RestaurantUrl}}/api/restaurants/all",
+							"host": [
+								"{{RestaurantUrl}}"
+							],
+							"path": [
+								"api",
+								"restaurants",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Restaurant detail",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{RestaurantUrl}}/api/restaurants/detail/1",
+							"host": [
+								"{{RestaurantUrl}}"
+							],
+							"path": [
+								"api",
+								"restaurants",
+								"detail",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Restaurant",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Panino Grigliato\",\n    \"address\": \"Via Matteotti, 21, 21052 Busto Arsizio VA\",\n    \"email\": \"PaninoGrigliato@reti.it\",\n    \"phoneNumber\": \"3467509240\",\n    \"idRestaurantType\": 1,\n    \"position\": {\n\t\t\"latitude\": 45.619136,\n\t\t\"longitude\": 8.847071\n\t}\n}"
+						},
+						"url": {
+							"raw": "{{RestaurantUrl}}/api/restaurants/add",
+							"host": [
+								"{{RestaurantUrl}}"
+							],
+							"path": [
+								"api",
+								"restaurants",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Restaurant",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 1,\n\t\"name\": \"Panino Grigliato\",\n    \"address\": \"Via Matteotti, 21, 21052 Busto Arsizio VA\",\n    \"email\": \"PaninoGrigliato@reti.it\",\n    \"phoneNumber\": \"3467509240\",\n    \"idRestaurantType\": 1,\n    \"position\": {\n\t\t\"latitude\": 45.619136,\n\t\t\"longitude\": 8.847071\n\t},\n\t\"averageRating\": 0\n}"
+						},
+						"url": {
+							"raw": "{{RestaurantUrl}}/api/restaurants/update",
+							"host": [
+								"{{RestaurantUrl}}"
+							],
+							"path": [
+								"api",
+								"restaurants",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Rating",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"idRestaurant\": 1,\n    \"averageRating\": 4.5\n}"
+						},
+						"url": {
+							"raw": "{{RestaurantUrl}}/api/restaurants/update/rating",
+							"host": [
+								"{{RestaurantUrl}}"
+							],
+							"path": [
+								"api",
+								"restaurants",
+								"update",
+								"rating"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Restaurant",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Name\": \"Burbee\",\n    \"Address\": \"via dante 7\",\n    \"Email\": \"burbee@reti.it\",\n    \"PhoneNumber\": 0331123456,\n    \"IdRestaurantType\": 1,\n    \"Latitude\": 0,\n    \"Longitude\": 0,\n    \"Enabled\": true\n}"
+						},
+						"url": {
+							"raw": "{{RestaurantUrl}}/api/restaurants/delete/2",
+							"host": [
+								"{{RestaurantUrl}}"
+							],
+							"path": [
+								"api",
+								"restaurants",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Menu",
+			"item": [
+				{
+					"name": "Get Menu",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{RestaurantUrl}}/api/restaurantsmenu/restaurant/1",
+							"host": [
+								"{{RestaurantUrl}}"
+							],
+							"path": [
+								"api",
+								"restaurantsmenu",
+								"restaurant",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add MenuItem",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"IdRestaurant\": 1,\n    \"Name\": \"Panino del giorno\",\n    \"Description\": \"Panino con tutta la roba avanzata dal giorno prima\",\n    \"IdDishType\": 1,\n    \"Price\": 9.0\n}"
+						},
+						"url": {
+							"raw": "{{RestaurantUrl}}/api/restaurantsmenu/new",
+							"host": [
+								"{{RestaurantUrl}}"
+							],
+							"path": [
+								"api",
+								"restaurantsmenu",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit MenuItem",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\": 1,\n\t\"IdRestaurant\": 1,\n    \"Name\": \"Panino del giorno\",\n    \"Description\": \"Panino con tutta la roba avanzata dal giorno prima\",\n    \"IdDishType\": 1,\n    \"Price\": 9.5\n}"
+						},
+						"url": {
+							"raw": "{{RestaurantUrl}}/api/restaurantsmenu/update",
+							"host": [
+								"{{RestaurantUrl}}"
+							],
+							"path": [
+								"api",
+								"restaurantsmenu",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete MenuItem",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{RestaurantUrl}}/api/restaurantsmenu/1",
+							"host": [
+								"{{RestaurantUrl}}"
+							],
+							"path": [
+								"api",
+								"restaurantsmenu",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

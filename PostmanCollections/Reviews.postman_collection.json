@@ -1,0 +1,359 @@
+{
+	"info": {
+		"_postman_id": "0d5efe3a-571c-4956-ad2d-391e5fd6d069",
+		"name": "Reviews",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Restaurant",
+			"item": [
+				{
+					"name": "Get Restaurant Reviews",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ReviewUrl}}/api/review/restaurant/1",
+							"host": [
+								"{{ReviewUrl}}"
+							],
+							"path": [
+								"api",
+								"review",
+								"restaurant",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Restaurant Order Review",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ReviewUrl}}/api/review/restaurant/order/1",
+							"host": [
+								"{{ReviewUrl}}"
+							],
+							"path": [
+								"api",
+								"review",
+								"restaurant",
+								"order",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Restaurants User Reviews",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ReviewUrl}}/api/review/restaurant/user/1",
+							"host": [
+								"{{ReviewUrl}}"
+							],
+							"path": [
+								"api",
+								"review",
+								"restaurant",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Restaurant User Review",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ReviewUrl}}/api/review/restaurant/1/1",
+							"host": [
+								"{{ReviewUrl}}"
+							],
+							"path": [
+								"api",
+								"review",
+								"restaurant",
+								"1",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Restaurant Review",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idOrder\": 1,\n    \"idRestaurant\": 1,\n    \"restaurantName\": \"Burbee\",\n    \"idUser\": 1,\n    \"userName\": \"caretro1\",\n    \"review\": \"Ottimo panino\",\n    \"rating\": 4\n}"
+						},
+						"url": {
+							"raw": "{{ReviewUrl}}/api/review/restaurant/add",
+							"host": [
+								"{{ReviewUrl}}"
+							],
+							"path": [
+								"api",
+								"review",
+								"restaurant",
+								"add"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rider",
+			"item": [
+				{
+					"name": "Get Rider Reviews",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ReviewUrl}}/api/review/rider/1",
+							"host": [
+								"{{ReviewUrl}}"
+							],
+							"path": [
+								"api",
+								"review",
+								"rider",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Rider Order Review",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ReviewUrl}}/api/review/rider/order/1",
+							"host": [
+								"{{ReviewUrl}}"
+							],
+							"path": [
+								"api",
+								"review",
+								"rider",
+								"order",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Riders User Reviews",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ReviewUrl}}/api/review/rider/user/1",
+							"host": [
+								"{{ReviewUrl}}"
+							],
+							"path": [
+								"api",
+								"review",
+								"rider",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Rider User Review",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ReviewUrl}}/api/review/rider/1/1",
+							"host": [
+								"{{ReviewUrl}}"
+							],
+							"path": [
+								"api",
+								"review",
+								"rider",
+								"1",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Rider Review",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idOrder\": 1,\n    \"idRider\": 1,\n    \"riderName\": \"Fatto Rino\",\n    \"idUser\": 1,\n    \"userName\": \"caretro1\",\n    \"review\": \"Ottimo fattorino\",\n    \"rating\": 4\n}"
+						},
+						"url": {
+							"raw": "{{ReviewUrl}}/api/review/rider/add",
+							"host": [
+								"{{ReviewUrl}}"
+							],
+							"path": [
+								"api",
+								"review",
+								"rider",
+								"add"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

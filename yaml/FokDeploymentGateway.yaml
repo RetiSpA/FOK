@@ -1,0 +1,42 @@
+# --- Deployment ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fok-deployment-gateway
+  labels:
+    app: fok-gateway
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: fok-gateway
+  template:
+    metadata:
+      labels:
+        app: fok-gateway
+    spec:
+      containers:
+      - name: webgateway
+        image: caretro/foodonkontainers:gatewaysimple
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: regcredcaretro
+
+---
+
+# --- Service ---
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    name: reti-lab-foodonkontainers-gateway-simple
+  name: reti-lab-foodonkontainers-gateway-simple
+spec:
+  selector:
+    app: fok-gateway
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+   

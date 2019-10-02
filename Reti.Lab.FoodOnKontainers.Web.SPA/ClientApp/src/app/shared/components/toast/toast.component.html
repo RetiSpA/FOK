@@ -1,0 +1,11 @@
+<ngb-toast
+  *ngFor="let toast of toastSvc.toasts"
+  [class]="toast.c"
+  [header]="toast.h"
+  [autohide]="autohide"
+  (mouseenter)="autohide = false"
+  (mouseleave)="autohide = true"
+  [delay]="toast.d"
+  (hide)="toastSvc.remove(toast)">
+  {{toast.b}}
+</ngb-toast>

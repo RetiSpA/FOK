@@ -1,0 +1,20 @@
+<div class="container">
+    <h2>Elenco dei ristoranti</h2>
+    <div *ngIf="restaurants?.length > 0">
+        <div class="restaurants-items card-deck">
+            <div class="restaurants-item card text-center" *ngFor="let item of restaurants">
+                <!-- <img class="restaurants-thumbnail" src="{{item.pictureUri}}" /> -->
+                <div class="card-body">
+                    <h5 class="card-title">{{item.name}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{item.idRestaurantTypeNavigation?.name}}</h6>
+                    <p class="card-text"><small>{{item.address}}</small></p>
+                    <p class="card-text"><span>Voto: {{item.averageRating != null ? item.averageRating : '-'}}</span></p>
+                    <a href="#" [routerLink]="['/restaurant', item.id]" class="btn btn-outline-secondary">Consulta Menu</a>
+                </div>                
+            </div>
+        </div>
+    </div>
+    <div *ngIf="restaurants?.length == 0">
+        <span>Al momento sembra non esserci nessun ristorante aperto...</span>
+    </div>
+</div>

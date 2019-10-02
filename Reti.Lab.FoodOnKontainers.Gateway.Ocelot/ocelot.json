@@ -1,0 +1,140 @@
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/values",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8500
+        }
+      ],
+      "UpstreamPathTemplate": "/api/test",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/flow/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "reti-lab-foodonkontainers-http-aggregator.fok-test.svc",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/flow/{everything}",
+      "UpstreamHttpMethod": []
+    },
+    {
+      "DownstreamPathTemplate": "/api/basket/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "reti-lab-foodonkontainers-basket-api.fok-test.svc",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/basket/{everything}",
+      "UpstreamHttpMethod": []
+    },
+    {
+      "DownstreamPathTemplate": "/api/restaurants/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "reti-lab-foodonkontainers-restaurants-api.fok-test.svc",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/restaurants/{everything}",
+      "UpstreamHttpMethod": []
+    },
+    {
+      "DownstreamPathTemplate": "/api/restaurantsmenu/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "reti-lab-foodonkontainers-restaurants-api.fok-test.svc",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/restaurantsmenu/{everything}",
+      "UpstreamHttpMethod": []
+    },
+    {
+      "DownstreamPathTemplate": "/api/orders/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "reti-lab-foodonkontainers-orders-api.fok-test.svc",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/orders/{everything}",
+      "UpstreamHttpMethod": []
+    },
+    {
+      "DownstreamPathTemplate": "/api/user/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "reti-lab-foodonkontainers-users-api.fok-test.svc",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/user/{everything}",
+      "UpstreamHttpMethod": []
+    },
+    {
+      "DownstreamPathTemplate": "/api/payment/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "reti-lab-foodonkontainers-payments-api.fok-test.svc",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/payment/{everything}",
+      "UpstreamHttpMethod": []
+    },
+    {
+      "DownstreamPathTemplate": "/api/deliveries/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "reti-lab-foodonkontainers-deliveries-api.fok-test.svc",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/deliveries/{everything}",
+      "UpstreamHttpMethod": []
+    },
+    {
+      "DownstreamPathTemplate": "/api/riders/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "reti-lab-foodonkontainers-deliveries-api.fok-test.svc",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/riders/{everything}",
+      "UpstreamHttpMethod": []
+    },
+    {
+      "DownstreamPathTemplate": "/api/review/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "reti-lab-foodonkontainers-reviews-api.fok-test.svc",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/review/{everything}",
+      "UpstreamHttpMethod": []
+    }
+  ],
+  "GlobalConfiguration": {
+    "RequestIdKey": "OcRequestId",
+    "AdministrationPath": "/administration"
+  }
+}

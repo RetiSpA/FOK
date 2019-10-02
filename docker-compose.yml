@@ -1,0 +1,114 @@
+version: '3.4'
+
+services:
+  reti.lab.foodonkontainers.users.api:
+    image: ${DOCKER_REGISTRY-}retilabfoodonkontainersusersapi
+    ports:
+      - "5001:80"    
+    deploy:
+      replicas: 1
+      endpoint_mode: dnsrr  
+    build:
+      context: .
+      dockerfile: Reti.Lab.FoodOnKontainers.Users.Api/Dockerfile
+
+
+  reti.lab.foodonkontainers.restaurants.api:
+    image: ${DOCKER_REGISTRY-}retilabfoodonkontainersrestaurantsapi
+    ports:
+      - "5002:80"
+    deploy:
+      replicas: 1
+      endpoint_mode: dnsrr
+    build:
+      context: .
+      dockerfile: Reti.Lab.FoodOnKontainers.Restaurants.Api/Dockerfile
+
+
+  reti.lab.foodonkontainers.basket.api:
+    image: ${DOCKER_REGISTRY-}retilabfoodonkontainersbasketapi
+    ports:
+      - "5003:80"
+    deploy:
+      replicas: 1
+      endpoint_mode: dnsrr
+    build:
+      context: .
+      dockerfile: Reti.Lab.FoodOnKontainers.Basket.Api/Dockerfile
+
+
+  reti.lab.foodonkontainers.deliveries.api:
+    image: ${DOCKER_REGISTRY-}retilabfoodonkontainersdeliveriesapi
+    ports:
+      - "5004:80"
+    deploy:
+      replicas: 1
+      endpoint_mode: dnsrr
+    build:
+      context: .
+      dockerfile: Reti.Lab.FoodOnKontainers.Deliveries.Api/Dockerfile
+
+
+  reti.lab.foodonkontainers.orders.api:
+    image: ${DOCKER_REGISTRY-}retilabfoodonkontainersordersapi
+    ports:
+      - "5005:80"
+    deploy:
+      replicas: 1
+      endpoint_mode: dnsrr
+    build:
+      context: .
+      dockerfile: Reti.Lab.FoodOnKontainers.Orders.Api/Dockerfile
+
+
+  reti.lab.foodonkontainers.payments.api:
+    image: ${DOCKER_REGISTRY-}retilabfoodonkontainerspaymentsapi
+    ports:
+      - "5006:80"
+    build:
+      context: .
+      dockerfile: Reti.Lab.FoodOnKontainers.Payments.Api/Dockerfile
+
+
+  reti.lab.foodonkontainers.reviews.api:
+    image: ${DOCKER_REGISTRY-}retilabfoodonkontainersreviewsapi
+    ports:
+      - "5007:80"
+    deploy:
+      replicas: 1
+      endpoint_mode: dnsrr
+    build:
+      context: .
+      dockerfile: Reti.Lab.FoodOnKontainers.Reviews.Api/Dockerfile
+
+
+  reti.lab.foodonkontainers.web.spa:
+    image: ${DOCKER_REGISTRY-}retilabfoodonkontainerswebspa
+    ports:
+      - "5008:80"
+    build:
+      context: .
+      dockerfile: Reti.Lab.FoodOnKontainers.Web.SPA/Dockerfile
+
+
+  reti.lab.foodonkontainers.gateway.simple:
+    image: ${DOCKER_REGISTRY-}retilabfoodonkontainersgatewaysimple
+    deploy:
+      replicas: 1
+    ports:
+      - "5000:80"
+    build:
+      context: .
+      dockerfile: Reti.Lab.FoodOnKontainers.Gateway.Simple/Dockerfile
+
+
+  reti.lab.foodonkontainers.gateway.ocelot:
+    image: ${DOCKER_REGISTRY-}retilabfoodonkontainersgatewayocelot
+    deploy:
+      replicas: 1
+      endpoint_mode: dnsrr
+    ports:
+      - "4000:80"
+    build:
+      context: .
+      dockerfile: Reti.Lab.FoodOnKontainers.Gateway.Ocelot/Dockerfile

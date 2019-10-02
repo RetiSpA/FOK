@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mssql-deliveries-db
+spec:
+  type: ExternalName
+  externalName: fok.database.windows.net
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fok-deployment-deliveries
+  labels:
+    app: fok-deliveries
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fok-deliveries
+  template:
+    metadata:
+      labels:
+        app: fok-deliveries
+    spec:
+      containers:      
+      - name: orderapi
+        image: caretro/foodonkontainers:deliveriesapi_v0
+        ports:
+        - containerPort: 80
+        env:
+        - name: "ASPNETCORE_ENVIRONMENT"
+          value: "Production"
+        - name: "ConnectionStrings__FokDeliveriesDB"
+          value: ""
+        - name: "RabbitMQConfigurations__HostName"
+          value: "rabbitmq.fok-test.svc"
+      imagePullSecrets:
+      - name: regcredcaretro
+---
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    name: reti-lab-foodonkontainers-deliveries-api
+  name: reti-lab-foodonkontainers-deliveries-api
+spec:
+  selector:
+    app: fok-deliveries
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+
+

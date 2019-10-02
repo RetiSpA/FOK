@@ -1,0 +1,23 @@
+<div class="container">
+  <h2>I tuoi ordini</h2>
+  <ng-container *ngIf="orders.length > 0">
+    <div class="list-group">
+      <a href="#" [routerLink]="['/order', order.id]" class="list-group-item list-group-item-action"
+        *ngFor="let order of orders">
+        <div class="d-flex w-100 justify-content-between" *ngIf="userSvc.user.role === USER">
+          <h5 class="mb-1">{{order.restaurantName}}</h5>
+          <small class="text-muted">Consegna prevista: {{order.deliveryRequestedDate | date:'dd/MM/yy HH:mm'}}</small>
+        </div>
+        <div class="d-flex w-100 justify-content-between" *ngIf="userSvc.user.role === MANAGER">
+          <h5 class="mb-1">Data consegna prevista: {{order.deliveryRequestedDate | date:'dd/MM/yy HH:mm'}}</h5>
+          <small class="text-muted">Indirizzo di consegna: {{order.deliveryAddress}}</small>
+        </div>
+        <p class="mb-1">Stato ordine: <mark>{{order.idStatus | orderStatus}}</mark></p>
+        <small class="text-muted">Prezzo totale: {{order.price}} €</small>
+      </a>
+    </div>
+  </ng-container>
+  <div *ngIf="orders?.length == 0">
+    <span>Non hai ancora {{userSvc.user.role === USER ? 'effettuato' : 'ricevuto'}} il tuo primo ordine...</span>
+  </div>
+</div>

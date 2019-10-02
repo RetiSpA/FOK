@@ -1,0 +1,49 @@
+{
+  "name": "Reti.Lab.FoodOnKontainers.Web.SPA",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "build:prod": "ng build --prod",
+    "build:ssr": "ng run Reti.Lab.FoodOnKontainers.Web.SPA:server:dev",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
+  },
+  "private": true,
+  "dependencies": {
+    "@agm/core": "^1.0.0-beta.7",
+    "@angular/animations": "8.2.2",
+    "@angular/common": "8.2.2",
+    "@angular/compiler": "8.2.2",
+    "@angular/core": "8.2.2",
+    "@angular/forms": "8.2.2",
+    "@angular/platform-browser": "8.2.2",
+    "@angular/platform-browser-dynamic": "8.2.2",
+    "@angular/platform-server": "8.2.2",
+    "@angular/router": "8.2.2",
+    "@ng-bootstrap/ng-bootstrap": "5.1.0",
+    "@nguniversal/module-map-ngfactory-loader": "next",
+    "aspnet-prerendering": "3.0.1",
+    "bootstrap": "4.3.1",
+    "core-js": "3.2.1",
+    "rxjs": "6.5.2",
+    "zone.js": "0.10.2"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "0.802.2",
+    "@angular/cli": "8.2.2",
+    "@angular/compiler-cli": "8.2.2",
+    "@angular/language-service": "8.2.2",
+    "@types/node": "12.0.10",
+    "codelyzer": "5.1.0",
+    "typescript": "3.5.3"
+  },
+  "optionalDependencies": {
+    "node-sass": "^4.9.3",
+    "protractor": "~5.4.0",
+    "ts-node": "~5.0.1",
+    "tslint": "~5.9.1"
+  }
+}

@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: rabbitmq
+  name: rabbitmq
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rabbitmq
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+         app: rabbitmq
+    spec:
+      containers:
+      - image: rabbitmq:3.6.0-management
+        name: rabbitmq
+        ports:
+        - containerPort: 15672
+        - containerPort: 5672
+        volumeMounts:
+        - mountPath: /etc/rabbitmq
+          name: rabbit-mq-data
+      restartPolicy: Always
+      hostname: rabbitmq
+      volumes:
+      - name: rabbit-mq-data
+        persistentVolumeClaim:
+          claimName: rabbit-mq-data
+---
+kind: Service
+apiVersion: v1
+metadata:
+ name: rabbitmq
+spec:
+  type: NodePort
+  # clusterIP: None  # We need a headless service to allow the pods to discover each
+  ports:           # other during autodiscover phase for cluster creation.
+   - name: http    # A ClusterIP will prevent resolving dns requests for other pods
+     protocol: TCP # under the same service.
+     port: 15672
+     targetPort: 15672
+     nodePort: 30080
+   - name: amqp
+     protocol: TCP
+     port: 5672
+     targetPort: 5672
+     nodePort: 30081
+  selector:
+    app: rabbitmq
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    volume.beta.kubernetes.io/storage-class: glusterfs-storage
+    volume.beta.kubernetes.io/storage-provisioner: kubernetes.io/glusterfs
+  labels:
+    app: rabbit-mq-data
+  name: rabbit-mq-data
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---

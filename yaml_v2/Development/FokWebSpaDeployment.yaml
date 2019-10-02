@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fok-deployment-web-spa
+  labels:
+    app: fok-web-spa
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fok-web-spa
+  template:
+    metadata:
+      labels:
+        app: fok-web-spa
+    spec:
+      containers:      
+      - name: fok-web-spa
+        image: caretro/foodonkontainers:webspa
+        ports:
+        - containerPort: 80
+        env:
+        - name: GatewayApiClient
+          value: http://localhost/gw
+      imagePullSecrets:
+      - name: regcredcaretro
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    name: reti-lab-foodonkontainers-web-spa
+  name: reti-lab-foodonkontainers-web-spa
+spec:
+  selector:
+    app: fok-web-spa
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80

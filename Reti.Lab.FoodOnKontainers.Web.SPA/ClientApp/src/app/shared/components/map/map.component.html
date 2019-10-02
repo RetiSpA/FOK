@@ -1,0 +1,7 @@
+<agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+    <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="markerDraggable" (dragEnd)="markerMoved.emit($event)">
+        <agm-info-window [isOpen]="isInfoWindowOpen">
+            {{infoWindowMessage}}
+          </agm-info-window>
+    </agm-marker>
+</agm-map>

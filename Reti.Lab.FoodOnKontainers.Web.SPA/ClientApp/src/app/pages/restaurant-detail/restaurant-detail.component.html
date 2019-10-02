@@ -1,0 +1,25 @@
+<div class="container">
+    <h2>{{restaurant?.name}}
+        <small class="text-muted">{{restaurant?.idRestaurantTypeNavigation?.name}}</small>
+    </h2>
+    <p>Voto: {{restaurant?.averageRating != null ? restaurant?.averageRating : '-'}}</p>
+    <div class="restaurant-detail">
+        <div class="restaurant-detail-item">Indirizzo: {{restaurant?.address}}</div>
+        <div class="restaurant-detail-item">Email: <a href="mailto:{{restaurant?.email}}">{{restaurant?.email}}</a></div>
+        <div class="restaurant-detail-item">Telefono: <a href="tel:{{restaurant?.phoneNumber}}">{{restaurant?.phoneNumber}}</a></div>
+        <div class="restaurant-detail-position" *ngIf="restaurant?.positionCoordinates?.latitude && restaurant?.positionCoordinates?.longitude">
+            <app-map
+                [latitude]="restaurant.positionCoordinates.latitude"
+                [longitude]="restaurant.positionCoordinates.longitude"
+                [infoWindowMessage]="restaurant.name">
+            </app-map>
+        </div>
+    </div>
+    <br>
+    <div class="restaurant-menu">
+        <h4>Menu</h4>
+        <div class="card-deck">
+            <app-restaurant-menu-item *ngFor="let item of restaurant?.restaurantsMenu" [item]="item" (addCart)="addToCart($event)"></app-restaurant-menu-item>
+        </div>        
+    </div>    
+</div>

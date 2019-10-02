@@ -1,0 +1,258 @@
+{
+	"info": {
+		"_postman_id": "8508e547-4eaa-4f2b-8f0d-08e84b9ff328",
+		"name": "Users",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"caretro1\",\n    \"password\": \"caretro1\"\n}"
+				},
+				"url": {
+					"raw": "{{UserUrl}}/api/user/authenticate",
+					"host": [
+						"{{UserUrl}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Roberto\",\n\t\"lastname\": \"Carettoni\",\n    \"username\": \"caretro1\",\n    \"password\": \"PasswordReti01!\",\n    \"token\": \"\",\n    \"budget\": 100.0\n}"
+				},
+				"url": {
+					"raw": "{{UserUrl}}/api/user/register",
+					"host": [
+						"{{UserUrl}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update user",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Roberto\",\n\t\"lastname\": \"Carettoni\",\n    \"username\": \"caretro1\",\n    \"password\": \"PasswordReti01!\",\n    \"token\": \"\",\n    \"budget\": 150.0\n}"
+				},
+				"url": {
+					"raw": "{{UserUrl}}/api/user/updateUser/1",
+					"host": [
+						"{{UserUrl}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"updateUser",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{UserUrl}}/api/user/getUser/1",
+					"host": [
+						"{{UserUrl}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"getUser",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{UserUrl}}/api/user/getAll",
+					"host": [
+						"{{UserUrl}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"getAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Favorite",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Roberto\",\n\t\"lastname\": \"Carettoni\",\n    \"username\": \"caretro1\",\n    \"password\": \"PasswordReti01!\",\n    \"token\": \"\",\n    \"budget\": 100.0\n}"
+				},
+				"url": {
+					"raw": "{{UserUrl}}/api/user/addFavorite/1/1",
+					"host": [
+						"{{UserUrl}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"addFavorite",
+						"1",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Favorite",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Roberto\",\n\t\"lastname\": \"Carettoni\",\n    \"username\": \"caretro1\",\n    \"password\": \"PasswordReti01!\",\n    \"token\": \"\",\n    \"budget\": 100.0\n}"
+				},
+				"url": {
+					"raw": "{{UserUrl}}/api/user/addFavorite/1/1",
+					"host": [
+						"{{UserUrl}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"addFavorite",
+						"1",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Budget",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Roberto\",\n\t\"lastname\": \"Carettoni\",\n    \"username\": \"caretro1\",\n    \"password\": \"PasswordReti01!\",\n    \"token\": \"\",\n    \"budget\": 100.0\n}"
+				},
+				"url": {
+					"raw": "{{UserUrl}}/api/user/subtractBudget/1/10",
+					"host": [
+						"{{UserUrl}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"subtractBudget",
+						"1",
+						"10"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
